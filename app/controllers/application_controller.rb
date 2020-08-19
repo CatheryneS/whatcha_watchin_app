@@ -12,6 +12,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    
+    binding.pry
+  end
+
+  get '/signup' do
+    erb :signup
+  end
+
+  post '/signup' do
+    binding.pry
+    erb :account
   end
 end
