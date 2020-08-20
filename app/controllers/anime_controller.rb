@@ -1,9 +1,10 @@
 class AnimeController < ApplicationController
-    get '/anime/new' do
+    get '/animes/new' do
         erb :new
     end
 
-    post '/anime/:id' do 
-
+    post '/animes' do 
+        binding.pry
+        erb :account
     end
 end
