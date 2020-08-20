@@ -1,5 +1,6 @@
 require './config/environment'
 require_relative './app/models/user.rb'
+require_relative './app/models/anime.rb'
 require 'securerandom'
 
 if ActiveRecord::Migrator.needs_migration?
@@ -8,4 +9,5 @@ end
 
 use Rack::MethodOverride
 use UsersController
+use AnimeController
 run ApplicationController
