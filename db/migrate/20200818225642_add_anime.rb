@@ -4,6 +4,7 @@ class AddAnime < ActiveRecord::Migration
       a.string :title
       a.string :status
       a.string :rating
+      a.integer :user_id
     end
   end
 end

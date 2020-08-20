@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(version: 20200818225642) do
 
   create_table "animes", force: :cascade do |t|
-    t.string "title"
-    t.string "status"
-    t.string "rating"
+    t.string  "title"
+    t.string  "status"
+    t.string  "rating"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
