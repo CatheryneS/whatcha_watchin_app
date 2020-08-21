@@ -3,6 +3,11 @@ class AnimeController < ApplicationController
         erb :new
     end
 
+    get '/animes' do
+        @animes = Anime.all
+        erb :account
+    end
+
     post '/animes' do 
         binding.pry
         erb :account
