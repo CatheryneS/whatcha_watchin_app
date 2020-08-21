@@ -5,3 +5,8 @@ Detail page for an anime!
 <br><br>
 <a href="/animes/<%= @anime.id%>/edit">Edit Post</a>
 <a href="/animes">Back to List</a>
+
+<form action="/animes/<%= @anime.id%>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete from list">
+</form>

@@ -29,4 +29,10 @@ class AnimeController < ApplicationController
         @anime.update(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating])
         redirect "/animes/#{@anime.id}"
     end
+
+    delete '/animes/:id' do
+        @anime =  Anime.find(params[:id])
+        @anime.destroy
+        redirect '/animes'
+    end
 end
