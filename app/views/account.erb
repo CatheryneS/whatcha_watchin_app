@@ -1,13 +1,8 @@
 Welcome <%= @user.name%>!
+<br>
+<a href="/logout">Log Out</a>
+<a href="/animes/new">Add Anime</a>
 
-<form action="/logout" method="post">
-<input type="hidden" name="_method" id="hidden">
-<input type="submit" value="Log Out">
-</form>
-
-<form action="/animes/new" method="get">
-<input type="submit" value="Add Anime">
-</form>
 <br><br>
 <% @animes.each do |a|%>
     <ol>
