@@ -27,8 +27,9 @@ class UsersController < ApplicationController
         end
       end
     
-      get '/user/:id' do
+      get '/users/:id' do
         @user = User.find_by_id(params[:id])
+        binding.pry
         erb :account
       end
 
