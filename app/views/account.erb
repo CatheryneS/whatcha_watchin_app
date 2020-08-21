@@ -11,7 +11,7 @@ Welcome <%= @user.name%>!
 <br><br>
 <% @animes.each do |a|%>
     <ol>
-    <li><h3><%= a.title%></h3></li>
+    <a href="/animes/<%=a.id%>"><li><h3><%= a.title%></h3></li></a>
     <li>Status: <%= a.status.capitalize%></li> 
     <li>Rating: <%= a.rating%></li>
     </ol>
