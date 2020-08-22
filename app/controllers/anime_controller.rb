@@ -1,11 +1,19 @@
 class AnimeController < ApplicationController
     get '/animes/new' do
-        erb :"/list/new"
+        if logged_in?
+            erb :"/list/new"
+        else
+            redirect '/login'
+        end
     end
 
     get '/animes/:id' do 
-        @anime = Anime.find_by(id: params[:id])
-        erb :"/list/show"
+        if logged_in?
+            @anime = Anime.find_by(id: params[:id])
+            erb :"/list/show"
+        else
+            redirect '/login'
+        end
     end
 
     get '/animes' do
@@ -26,10 +34,10 @@ class AnimeController < ApplicationController
 
     get '/animes/:id/edit' do
         @anime = Anime.find_by(id: params[:id])
-        if current_user.id == @anime.user_id
+        if current_user == nil
+            redirect '/login'
+        elsif current_user.id == @anime.user_id
             erb :"/list/edit"
-        else
-            redirect '/animes/:id'
         end
     end
 
@@ -40,8 +48,8 @@ class AnimeController < ApplicationController
     end
 
     delete '/animes/:id' do
-        if current_user && logged_in
-            @anime = Anime.find(params[:id])
+        @anime = Anime.find(params[:id])
+        if current_user.id == @anime.user_id && logged_in?
             @anime.destroy
             redirect '/animes'
         else
