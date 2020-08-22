@@ -3,8 +3,10 @@
 
 <h1>Welcome <%= @user.name%>!</h1>
 <br>
-<%if @anime == nil%>
+<%if @animes.count == 0 %>
 <%= @new_user %>
+<%else%>
+<h4>Total amount of animes: <%= @animes.count%></h4>
 <%end%>
 <a href="/animes/new"><h3>Add Anime</h3></a>
 <br>

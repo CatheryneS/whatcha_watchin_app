@@ -2,11 +2,14 @@ Detail page for an anime!
 <h3><%= @anime.title%></h3>
     <li>Status: <%= @anime.status.capitalize%></li> 
     <li>Rating: <%= @anime.rating%></li>
-<br><br>
-<a href="/animes/<%= @anime.id%>/edit">Edit Post</a>
+<br>
 <a href="/animes">Back to List</a>
-
+<br><br>
+<form action="/animes/<%=@anime.id%>/edit" method="get">
+<input type="submit" value="Edit Post">
+</form>
+<br>
 <form action="/animes/<%= @anime.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete from list">
+<input type="submit" value="Delete">
 </form>

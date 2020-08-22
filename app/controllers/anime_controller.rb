@@ -12,21 +12,26 @@ class AnimeController < ApplicationController
         if logged_in?
             @user = current_user
             @animes = Anime.all.select{ |a| a.user_id == @user.id}
-            
+
             erb :"/list/account"
-          else
+        else
             erb :"/user/welcome"
-          end
+        end
     end
 
     post '/animes' do 
+        binding.pry
         Anime.create(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating], user_id: current_user.id)
         redirect '/animes'
     end
 
     get '/animes/:id/edit' do
         @anime = Anime.find_by(id: params[:id])
-        erb :"/list/edit"
+        if current_user.id == @anime.user_id
+            erb :"/list/edit"
+        else
+            redirect '/animes/:id'
+        end
     end
 
     patch '/animes/:id' do
