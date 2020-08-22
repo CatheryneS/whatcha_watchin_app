@@ -41,8 +41,12 @@ class AnimeController < ApplicationController
     end
 
     delete '/animes/:id' do
-        @anime = Anime.find(params[:id])
-        @anime.destroy
-        redirect '/animes'
+        if current_user && logged_in
+            @anime = Anime.find(params[:id])
+            @anime.destroy
+            redirect '/animes'
+        else
+            redirect '/login'
+        end
     end
 end
