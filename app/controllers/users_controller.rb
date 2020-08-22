@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   get "/login" do
-    erb :welcome
+    # binding.pry
+    erb :"/user/welcome"
   end
 
   post '/login' do
@@ -29,8 +30,9 @@ class UsersController < ApplicationController
     
       get '/users/:id' do
         @user = User.find_by_id(params[:id])
-        @animes = Anime.all
-        erb :account
+        @animes = Anime.all.select{ |a| a.user_id == @user.id}
+        @new_user = "Get started by adding your first anime."
+        erb :"/list/account"
       end
 
       get '/logout' do
