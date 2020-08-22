@@ -19,8 +19,7 @@ class AnimeController < ApplicationController
         end
     end
 
-    post '/animes' do 
-        binding.pry
+    post '/animes' do
         Anime.create(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating], user_id: current_user.id)
         redirect '/animes'
     end

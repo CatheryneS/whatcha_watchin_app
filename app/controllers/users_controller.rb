@@ -19,10 +19,14 @@ class UsersController < ApplicationController
   end
     
   get '/users/:id' do
-    @user = User.find_by_id(params[:id])
-    @animes = Anime.all.select{ |a| a.user_id == @user.id}      
-    @new_user = "Get started by adding your first anime."
-    erb :"/list/account"
+    if logged_in?
+      @user = User.find_by_id(params[:id])
+      @animes = Anime.all.select{ |a| a.user_id == @user.id}      
+      @new_user = "Get started by adding your first anime."
+      erb :"/list/account"
+    else
+      redirect '/login'
+    end
   end
   
   get '/signup' do
