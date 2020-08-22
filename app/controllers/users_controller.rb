@@ -8,10 +8,8 @@ class UsersController < ApplicationController
         
         if user && user.authenticate(params[:user][:password])
           session[:user_id] = user.id
-          flash[:success] = "Welcome back #{user.name}!"
-          redirect "/user/#{user.id}"
+          redirect "/users/#{user.id}"
         else
-          flash[:error] = "Looks like something did work. Please try again."
           redirect '/login'
         end
       end

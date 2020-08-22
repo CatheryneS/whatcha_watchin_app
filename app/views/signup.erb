@@ -1,16 +1,16 @@
 <h1>Sign Up</h1>
 <form action="/signup" method="post">
 <label for="name">Name:</label>
-<input type="text" name="user[name]" id="name">
+<input type="text" name="user[name]" id="name" required>
 <br><br>
 <label for="username">Username:</label>
-<input type="text" name="user[username]" id="username">
+<input type="text" name="user[username]" id="username" required>
 <br><br>
 <label for="email">Email:</label>
-<input type="email" name="user[email]" id="email">
+<input type="email" name="user[email]" id="email" required>
 <br><br>
 <label for="password">Password:</label>
-<input type="password" name="user[password]" id="password">
+<input type="password" name="user[password]" id="password" required>
 <br><br>
 <input type="submit" value="Sign Up">
 </form>
