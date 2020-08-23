@@ -1,6 +1,4 @@
 <a href="/logout">Log Out</a>
-
-
 <h1>Welcome <%= @user.name%>!</h1>
 <br>
 <%if @animes.count == 0 %>
@@ -10,6 +8,7 @@
 <%end%>
 <a href="/animes/new"><h3>Add Anime</h3></a>
 <br>
+
 <% @animes.each do |a|%>
     <ol>
     <a href="/animes/<%=a.id%>"><li><h3><%= a.title%></h3></li></a>

@@ -29,6 +29,7 @@ class AnimeController < ApplicationController
 
     post '/animes' do
         Anime.create(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating], user_id: current_user.id)
+        flash[:created] = "You've successfully added a new anime."
         redirect '/animes'
     end
 
@@ -44,6 +45,7 @@ class AnimeController < ApplicationController
     patch '/animes/:id' do
         @anime = Anime.find(params[:id])
         @anime.update(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating])
+        flash[:created] = "You've successfully added a new anime."
         redirect "/animes/#{@anime.id}"
     end
 
