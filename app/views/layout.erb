@@ -15,25 +15,10 @@
   </head>
   <body>
     <div class="wrapper">
-      <% if flash[:error]%>
-        <h3 style="color:red;"><%= flash[:error]%></h3>
-      <% end %>
-      <% if flash[:created]%>
-        <center><%= flash[:created]%></center>
-      <% end %>
-      <% if flash[:welcome]%>
-        <%= flash[:welcome]%><br>
-      <% end %>
-      <% if flash[:logout]%>
-        <%= flash[:logout]%>
-      <% end %>
-      <% if flash[:singup]%>
-        <%= flash[:signup]%>
-      <% end %>
-      <% if flash[:oops]%>
-        <h3 style="color:red;"><%= flash[:oops]%></h3>
-      <% end %>
 
+      <% flash.keys.each do |type| %>
+        <h4><%= flash[type] %></h4>
+      <% end %>
 
         <%= yield %>
 
