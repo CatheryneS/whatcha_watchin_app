@@ -8,6 +8,7 @@ class AnimeController < ApplicationController
     end
 
     get '/animes/:id' do 
+        binding.pry
         if logged_in?
             @anime = Anime.find_by(id: params[:id])
             erb :"/list/show"
@@ -28,6 +29,7 @@ class AnimeController < ApplicationController
     end
 
     post '/animes' do
+        binding.pry
         Anime.create(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating], user_id: current_user.id)
         flash[:created] = "You've successfully added a new anime."
         redirect '/animes'

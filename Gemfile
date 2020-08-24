@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'sysrandom'
 gem 'sinatra-flash'
+gem 'jikan.rb'
 
 group :test do
   gem 'rspec'
