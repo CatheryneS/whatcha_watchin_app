@@ -11,7 +11,6 @@ class AnimeController < ApplicationController
         if logged_in?
             @anime = Anime.find_by(id: params[:id])
             @details = Api.query(@anime.title)
-            binding.pry
             erb :"/list/show"
         else
             redirect '/login'

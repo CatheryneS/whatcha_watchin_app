@@ -1,9 +1,16 @@
 <img src="<%= @details["image_url"]%>" alt="">
-<h3><%= @anime.title%></h3>
-    <li>Status: <%= @anime.status.capitalize%></li> 
-    <li>Rating: <%= @anime.rating%></li>
+<h1><%= @anime.title%></h1>
+<ul>
+    <li>Your Status: <%= @anime.status.capitalize%></li> 
+    <li>Your Rating: <%= @anime.rating%></li>
+    <li>Rated: <%= @details["rated"]%></li>
+</ul>
 <br>
+<h4>Synopsis</h4>
+<br>
+<p><%= @details["synopsis"]%></p>
 
+<br>
 <a href="/animes">Back to List</a>
 <br><br>
 <form action="/animes/<%=@anime.id%>/edit" method="get">
