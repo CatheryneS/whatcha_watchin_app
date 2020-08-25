@@ -1,15 +1,15 @@
-require 'json'
-require 'net/http'
+require "uri"
+require "httparty"
+require 'pry'
 
 class Api
-    def initialize 
+    include HTTParty
+    BASE_URL = "https://api.jikan.moe/v3/"
+    SEARCH_URL = "https://api.jikan.moe/v3/search/anime?q="
 
-    end
-
-    def get_api_response
-        endpoint = "https://api.jikan.moe/v3/search/anime?q=" 
-        uri = URI.parse(URI.encode(endpoint))
-        api_response = Net::HTTP.get(uri)
-        JSON.parse(api_response)
+    def self.query(input)
+        url = SEARCH_URL + "#{input}"
+        res = HTTParty.get(url)
+        res["results"].first
     end
 end
