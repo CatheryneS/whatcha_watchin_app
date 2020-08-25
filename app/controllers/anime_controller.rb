@@ -21,7 +21,7 @@ class AnimeController < ApplicationController
         if logged_in?
             @user = current_user
             @animes = Anime.all.select{ |a| a.user_id == @user.id}
-
+            # binding.pry
             erb :"/list/account"
         else
             erb :"/user/welcome"
@@ -29,7 +29,6 @@ class AnimeController < ApplicationController
     end
 
     post '/animes' do
-        binding.pry
         Anime.create(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating], user_id: current_user.id)
         flash[:created] = "You've successfully added a new anime."
         redirect '/animes'
