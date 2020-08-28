@@ -19,9 +19,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  error 400..510 do
+  error 404 do
     erb :embarrassing
   end
+  
   helpers do
     def current_user
       User.find_by(id: session[:id])
