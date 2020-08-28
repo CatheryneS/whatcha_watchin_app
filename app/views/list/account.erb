@@ -1,23 +1,33 @@
-<a href="/logout">Log Out</a>
-<h1>Welcome <%= @user.name%>!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatcha Watchin'</title>
+</head>
+<body>
+    <h1>Welcome <%= @user.name%>!</h1>
+    <%if @animes.count == 0 %>
+        <h3><%= @new_user %></h3>
+    <%else%>
+        <h4>Total amount of animes: <%= @animes.count%></h4>
+    <%end%>
+    <a href="/animes/new"><h3>Add Anime</h3></a>
+    <br>
+    <% @animes.each do |a|%>
+        <%details = Api.query(a.title)%> 
+        <ul>
+        <img src="<%= details["image_url"]%>" alt="" width="100x100">
+        <a href="/animes/<%=a.id%>"><%= a.title.capitalize%></a>
+        <%= a.status.capitalize%>
+        <%= a.rating%>
+        </ul>
+    <%end%>    
+</body>
+
 <br>
-<%if @animes.count == 0 %>
-<%= @new_user %>
-<%else%>
-<h4>Total amount of animes: <%= @animes.count%></h4>
-<%end%>
-<a href="/animes/new"><h3>Add Anime</h3></a>
+
 <br>
-<% @@titles = []%>
-<% @animes.each do |a|%>
-    <%@@titles << a.title%> 
-    <ol>
-    <a href="/animes/<%=a.id%>"><li><h3><%= a.title%></h3></li></a>
-    <li>Status: <%= a.status.capitalize%></li> 
-    <li>Rating: <%= a.rating%></li>
-    </ol>
-<%end%>
-<%@@titles.each do |title|%>
-    <%details = Api.query(title)%>
-   <img src="<%= details["image_url"]%>" alt="" width="100x100">
-<%end%>
+
+
+</html>
