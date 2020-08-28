@@ -11,8 +11,16 @@
     
   </head>
   <body>
+    <header>
+      <h1>Whatcha Watchin'</h1>
+      
+      <nav>
+        <a href="/animes">Anime List</a>
+        <a href="/logout"id="log-out">Log Out</a>
+      </nav>
+    </header>
     <div class="wrapper">
-      <a href="/logout">Log Out</a>
+      
       <% flash.keys.each do |type| %>
         <h4><%= flash[type] %></h4>
       <% end %>
