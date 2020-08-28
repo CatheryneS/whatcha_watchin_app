@@ -8,16 +8,12 @@
 <%end%>
 <a href="/animes/new"><h3>Add Anime</h3></a>
 <br>
-<% @@titles = []%>
 <% @animes.each do |a|%>
-    <%@@titles << a.title%> 
-    <ol>
+    <%details = Api.query(a.title)%>
+    <ul>
+    <img src="<%= details["image_url"]%>" alt="" width="100x100">
     <a href="/animes/<%=a.id%>"><li><h3><%= a.title%></h3></li></a>
     <li>Status: <%= a.status.capitalize%></li> 
     <li>Rating: <%= a.rating%></li>
-    </ol>
-<%end%>
-<%@@titles.each do |title|%>
-    <%details = Api.query(title)%>
-   <img src="<%= details["image_url"]%>" alt="" width="100x100">
+    </ul>
 <%end%>
