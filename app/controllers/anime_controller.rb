@@ -47,7 +47,7 @@ class AnimeController < ApplicationController
     patch '/animes/:id' do
         @anime = Anime.find(params[:id])
         @anime.update(title: params[:anime][:title], status: params[:anime][:status], rating: params[:anime][:rating])
-        flash[:created] = "You've successfully added a new anime."
+        flash[:updated] = "You've successfully updated a new anime."
         redirect "/animes/#{@anime.id}"
     end
 
@@ -55,6 +55,7 @@ class AnimeController < ApplicationController
         @anime = Anime.find(params[:id])
         if current_user.id == @anime.user_id && logged_in?
             @anime.destroy
+            flash[:deleted] = "Anime successfully deleted."
             redirect '/animes'
         else
             redirect '/login'
