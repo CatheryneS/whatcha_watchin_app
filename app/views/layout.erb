@@ -12,11 +12,12 @@
   </head>
   <body>
     <header>
-      <h1>Whatcha Watchin'</h1>
-      
       <nav>
-        <a href="/animes">Anime List</a>
-        <a href="/logout"id="log-out">Log Out</a>
+        <% if logged_in? %>
+          <h1>Whatcha Watchin'</h1>
+          <a href="/animes">Anime List</a>
+          <a href="/logout"id="log-out">Log Out</a>
+        <% end %>
       </nav>
     </header>
     <div class="wrapper">
