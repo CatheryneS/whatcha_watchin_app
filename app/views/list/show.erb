@@ -9,8 +9,8 @@
 <h4>Synopsis</h4>
 <br>
 <p><%= @details["synopsis"]%></p>
-
-<br>
+<a href="<%= @details["url"]%>" target="_blank">Learn more</a>
+<br><br>
 <a href="/animes">Back to List</a>
 <br><br>
 <form action="/animes/<%=@anime.id%>/edit" method="get">
